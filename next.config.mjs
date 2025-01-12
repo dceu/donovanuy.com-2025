@@ -4,7 +4,10 @@ import remarkGfm from 'remark-gfm'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  basePath: "/donovanuy.com",
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
+  output: "export",
+  reactStrictMode: true,
 }
 
 const withMDX = nextMDX({
