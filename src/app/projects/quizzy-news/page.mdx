@@ -1,0 +1,127 @@
+import { ProjectLayout } from '@/components/ProjectLayout'
+import LinkIcon from '@/components/LinkIcon'
+import Carousel from '@/components/Carousel'
+
+import quizzyLogo from './quizzy.png'
+
+export const project = {
+  owner: 'Emily Lange',
+  dateRange: '2023 - 2024',
+  title: "Wordle plus 'Wait Wait...Don't Tell Me!'",
+  description:
+    'GenAI powered news-quiz app geared towards increasing youth engagement with the news cycle.',
+  links: [
+      { href: 'https://qz-news.web.app', label: 'Quizzy.News Dev Build'},
+      { href: 'https://github.com/Quizzy-News/app', label: 'GitHub Repo' }
+      ],
+}
+
+export const metadata = {
+  title: project.title,
+  description: project.description,
+}
+
+export default (props) => <ProjectLayout project={project} {...props} />
+
+# **Quizzy.News** - ***Lead Developer & Data Architect***
+***Official Launch Coming Soon!*** (Feb 2025) <br />
+***[Current development version](https://qz-news.web.app)***
+
+Working with a small development team, I lead the development of Quizzy News, an open-source quiz game based on current events.<br />
+<details open>
+<summary>Tech Stack</summary>
+
+> **ReactJS**: React Router, React Hooks, <br />
+> **TailwindCSS (Nativewind)**, <br />
+> **Expo**, Expo Font, Metro-Runtime, <br />
+> **Firebase**: Cloud Functions, Firestore Database, Hosting, <br />
+> **AI**: Gemini-Pro, ChatGPT-4, <br />
+> **APIS**: NewsAPI.org, Quizzy.News API, <br />
+> **Other Libraries**: JSDOM, Axios, Readability, Dotenv, <br />
+> **Job Schedulers**: AWS EventBridge, BreeJS, <br />
+> **Dev Tools**: Git, GitHub, VSCode, Postman, Figma, PM2, NPM, Yarn <br />
+
+</details>
+<Image src={quizzyLogo} alt="" />
+## App User Flow | ***(LandingPage -> ScorePage)*** <br/>
+Follow along with the [Figma Design & Research](https://www.figma.com/design/vG348IA2plE5sBvZsaC86X/Quizzy.News-%40-EARTH-A-THON?node-id=0-1&t=FHhtGJG8yHtFkOeM-1) by [Emily Lange](https://www.emilylange.com/) for insight into the designer's intent. Her original designs accompanied by UX Research and notes were provided in the Democracy Labs project overview, and are largely what drew me to the project. <br /> 
+
+> 1. User arrives on Home page of application, introducing them to Quizzy, and offers a button to start the game.
+> 2. Quizzy loads the game data, and says: <br/>
+   "Get Ready!" <br/>
+   "3... 2... 1..."
+> 3. GamePage: <br/>
+>   ***i.*** the current question, 3 possible answer choices, the player's current score, and a timer indicating remaining gametime are shown. <br />
+>   ***ii.*** allowing the timer to expire or answering all the questions triggers a *grey-out* that then *navigates* to the ScorePage. <br />
+>   ***iii.*** selecting an answer choice *updates* the score and *navigates* to the next question or ScorePage. <br />
+> 4. ScorePage: displays the user's final score, summarizes player performance, offers links to source articles, displays a countdown to next available quiz, and offers a button to share the game with friends.
+
+
+## Article Data and Quiz Generation Pipeline
+The process for article sourcing (**NewsAPI.org**), parsing (**JSDOM** + **Readability**), and generating quiz content (**Gemini** & **ChatGPT**) proceeds as follows:
+
+> 1. Retrieves article data (content, and metadata) using NewsAPI.org API Endpoints <br />
+>   1b. Retrieves article content (when not supplied by NewsAPI) using axios and jsdom.
+> 2. Parses the articles using Mozilla's Readability library
+> 3. Passes the processed articles to Gemini AI & ChatGPT to generate quiz content
+> 4. Saves the daily quiz to Firestore database
+> 5. Returns status code and result data.
+
+
+
+## Prompt Engineering Techniques
+1. **Structured Output enforcement**: each prompt includes specific JSON schema examples.
+2. **Context Management**: Question generation prompt explicitly instructs model to generate questions without referencing the specific article:
+   - DO NOT write questions like "What is the main point of this article?"
+   - DO NOT directly refence the article in the question. Provide enough context for the reader to be able to answer the question if they have read an article following the same story, or one with a similar focus.
+   - DO NOT reference the identity of the author, publication, or news outlet, unless directly relevant to the article's points. 
+3. **Multi-step refinement**:  
+   - Initial Question Generation (5 Questions per Article)
+   - Curation (Select the best question) 
+   - Final quiz compilation (best multiple-choice question for each article)
+
+
+## Pain.md
+In my local repository, I have a file called `Pain.md` which contains a list of the problems I encountered while working on this project.
+It's my personal log to keep a project accountable for my head trauma.
+### Front-End
+- TailwindCSS Learning Curve
+- State Management between Page Components
+- periodic design updates & changes
+- Fonts & Assets not loading in Firebase deployed Build.
+- Bundler does not link Fonts correctly when building for Firebase Hosting.
+- Inconsistent rendering between different viewport sizes.
+- Quiz not loading if quiz for requested date is unavailable, and being stuck on loading page.
+  
+### Back-end
+- Working with Firebase API Documentation inconsistencies
+- GenAI security and safety settings
+- Inconsistent formatting of output, despite prompted preferences
+- hybrid asynchronous and synchronous programming patterns
+- whitespace and special character handling for readability parsing as well as AI prompting
+- Exceeding runtime memory constraints
+
+## Moments of Relief:
+### Front-End
+- Downloading and installing Tailwind CSS IntelliSense VSCode Extension.
+- UseEffect & UseState Hooks for state management, and render logic (especially between GamePage and ScorePage navigation)
+- Tailwind.config for theming overhauls in tandem with Figma developer tools for bootstrapping new components.
+- Ensure asset locations are declared correctly in metro.config.js, and library icons are included in firebase.json
+- (Temporary fix) manually edit the build output to correcly link fonts.
+- (Next build) Explicit breakpoints for mobile, tablet, and desktop.
+- (Currently working on) 404 Page, and edit fetching logic to handle case where quiz data for current date is unavailable to instead resolve the most recently available quiz.
+### Back-End
+- Learning CommonJS vs ES6 module syntax nuances
+- Explicit declaration of Safety Settings (via API calls), as well as setting aside problematic artifacts for human review.
+- Developed and implemented schemas for desired output formats (JSON)
+- Asynchronous calls to API endpoints, with blocking code acting as checkpoints between processing steps.
+- Leveraging REGEX with string methods to sanitize text content for parsers, AI prompts, and AI outputs.
+- Heap, closure, and memory-leak analysis to identify and resolve memory issues.
+
+## Further Feature Development & Learning Opportunities:
+- More whimsical animations and sounds to further establish the game's personality.
+- Implementing a user-friendly interface for managing & reviewing quiz content, with access control, and data safety -- i.e. an admin dashboard.
+- Player Accounts with user settings for personalization (difficulty, areas of interest, safety), cummulative scorekeeping, and engagement tracking. 
+- Passing video data (or video transcripts) as prompts for quiz generation (Current workflow only processes text).
+- Improved prompt validation and output quality control via advanced prompt chaining.
+- and more...
