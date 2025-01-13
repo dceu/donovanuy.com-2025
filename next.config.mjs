@@ -6,7 +6,6 @@ import remarkGfm from 'remark-gfm'
 const nextConfig = {
   basePath: "",
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
-  output: "export",
   reactStrictMode: true,
 }
 
