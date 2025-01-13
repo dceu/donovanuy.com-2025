@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import Image from "next/image";
 
 export function Photos(images){
     let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
