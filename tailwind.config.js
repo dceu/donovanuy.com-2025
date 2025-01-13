@@ -25,4 +25,10 @@ module.exports = {
     },
     typography: typographyStyles,
   },
+  extend: {
+    screens: {
+      'print': { raw: 'print'},
+      'screen': { raw: 'screen'},
+    }
+  }
 }
