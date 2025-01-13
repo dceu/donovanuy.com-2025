@@ -16,7 +16,7 @@ import {
 import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
-import avatarImage from '@/images/avatar.jpg'
+import avatarImage from '@/images/avatar-mew.jpg'
 
 function CloseIcon(props) {
   return (
@@ -232,7 +232,7 @@ function Avatar({ large = false, className, ...props }) {
         sizes={large ? '4rem' : '2.25rem'}
         className={clsx(
           'rounded-full bg-zinc-100 object-cover dark:bg-zinc-800',
-          large ? 'h-16 w-16' : 'h-9 w-9',
+          large ? 'hidden' : 'h-9 w-9',
         )}
         priority
       />
