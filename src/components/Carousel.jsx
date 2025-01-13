@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-export function Photos(images, rotations){
+export function Photos(images){
     let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
     
     return (
