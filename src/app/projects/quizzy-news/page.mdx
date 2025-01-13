@@ -46,6 +46,8 @@ Working with a small development team, I lead the development of Quizzy News, an
 ## App User Flow | ***(LandingPage -> ScorePage)*** <br/>
 Follow along with the [Figma Design & Research](https://www.figma.com/design/vG348IA2plE5sBvZsaC86X/Quizzy.News-%40-EARTH-A-THON?node-id=0-1&t=FHhtGJG8yHtFkOeM-1) by [Emily Lange](https://www.emilylange.com/) for insight into the designer's intent. Her original designs accompanied by UX Research and notes were provided in the Democracy Labs project overview, and are largely what drew me to the project. <br /> 
 
+
+
 > 1. User arrives on Home page of application, introducing them to Quizzy, and offers a button to start the game.
 > 2. Quizzy loads the game data, and says: <br/>
    "Get Ready!" <br/>
@@ -81,24 +83,23 @@ The process for article sourcing (**NewsAPI.org**), parsing (**JSDOM** + **Reada
    - Final quiz compilation (best multiple-choice question for each article)
 
 
-## Pain.md
-In my local repository, I have a file called `Pain.md` which contains a list of the problems I encountered while working on this project.
-It's my personal log to keep a project accountable for my head trauma.
+## Pains.md
 ### Front-End
 - TailwindCSS Learning Curve
 - State Management between Page Components
-- periodic design updates & changes
-- Fonts & Assets not loading in Firebase deployed Build.
-- Bundler does not link Fonts correctly when building for Firebase Hosting.
+- Design updates & scope changes
+- Hosting service not resolving Fonts & Assets correctly.
+- Bundler configuration.
+- Tailwind Configuration
 - Inconsistent rendering between different viewport sizes.
 - Quiz not loading if quiz for requested date is unavailable, and being stuck on loading page.
   
 ### Back-end
 - Working with Firebase API Documentation inconsistencies
 - GenAI security and safety settings
-- Inconsistent formatting of output, despite prompted preferences
-- hybrid asynchronous and synchronous programming patterns
-- whitespace and special character handling for readability parsing as well as AI prompting
+- Inconsistent formatting of output, despite explicit prompt preferences
+- Mixing asynchronous and synchronous programming patterns
+- Whitespace and special characters handling for readability parsing as well as AI prompting
 - Exceeding runtime memory constraints
 
 ## Moments of Relief:
