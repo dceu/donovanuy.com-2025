@@ -17,11 +17,18 @@ Spotlight is a [Tailwind UI](https://tailwindui.com) site template built using [
       - [ ] Full CV (possible waste of people's time?)
     - [ ] 5 photos
 
+#### Photos
+  - [ ] Avatar Pic (Professional HS or AI-generated)
+  - [ ] Favicon 
+
 
 ### Write
   - [ ] 3 articles
-  - [ ] Quizzy page.mdx
-  - [ ] iSeaTree page.mdx
+  - [x] Quizzy page.mdx
+    - [ ] add example screens
+    - [ ] add example prompts
+    - [ ] add link to quizzy when it is launched
+  - [x] iSeaTree page.mdx (temporary)
   - [ ] Bio
   - [ ] Uses page.mdx
 
