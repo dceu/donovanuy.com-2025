@@ -49,7 +49,7 @@ export const metadata = {
 export default function Projects() {
   return (
     <SimpleLayout
-      title="Projects that I'm excited to whare with you, featuring React, AI, and more."
+      title="Projects that I'm excited to share with you, featuring React, AI, and more."
       intro="Here's a little about some projects that leverage AI to contribute towards heightening cultural awareness and promoting accessibility."
     >
       <ul
